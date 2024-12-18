@@ -16,6 +16,7 @@ class addTasks extends Action
     public function handle(array $data)
     {
 
+
           tasks::create($data);
 
           return response()->json(['message' => 'Task created successfully'], 303);
