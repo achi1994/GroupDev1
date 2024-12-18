@@ -10,17 +10,22 @@ use Lorisleiva\Actions\Concerns\AsAction;
 
 class UpdateTask extends Action
 {
-    public function handle(array $data)
+    public function handle(int $id)
     {
 
-        tasks::create($data);
+        $tasks = tasks::find($id);
+
+
+        $tasks->tittle = 'new tittle';
+
+        $tasks -> save();
 
         return response()->json(['message' => 'Task created successfully'], 303);
 
     }
 
-    public function asController(addTaskRequest $request):JsonResponse
+    public function asController(int $id):JsonResponse
     {;
-        return $this->handle($request->validated());
+        return $this->handle($id);
     }
 }
