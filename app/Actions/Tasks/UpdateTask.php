@@ -2,38 +2,25 @@
 
 namespace App\Actions\Tasks;
 
-use App\Http\Requests\Task\addTaskRequest;
+use App\Http\Requests\Task\UpdateTaskRequest;
 use App\Models\tasks;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Lorisleiva\Actions\Action;
-use Lorisleiva\Actions\Concerns\AsAction;
 
 class UpdateTask extends Action
 {
-    public function handle(int $id)
+    public function handle(int $id, array $data)
     {
-
-        try {
-            $tasks = tasks::findw($id);
-
-
-            $tasks->tittle = 'new tittle';
-
-            $tasks -> save();
-
-            return response()->json(['message' => 'Task created successfully']);
-        }catch (Exception){
-            return  response()->json(['message' => 'server error']);
+        $task = tasks::find($id);
+        if (!$task) {
+            return response()->json(['message' => 'Task not found'], 404);
         }
-
-
-
-
+        $task->update($data);
+        return response()->json(['message' => 'Task updated successfully']);
     }
 
-    public function asController(int $id):JsonResponse
+    public function asController(int $id, UpdateTaskRequest $request):JsonResponse
     {;
-        return $this->handle($id);
+        return $this->handle($id, $request->validated());
     }
 }
