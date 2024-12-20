@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Actions\Products\getProducts;
 use App\Actions\Products\addProduct;
 use App\Actions\Products\getSingleProduct;
+use App\Actions\Products\updateProduct;
 
 
 Route::prefix('tasks')->group(function (){
@@ -19,6 +20,7 @@ Route::prefix('tasks')->group(function (){
 
 Route::prefix('products')->group(function (){
     Route::get('getProducts', getProducts::class);
-    Route::post('create', addProduct::class);
+    Route::post('createProduct', addProduct::class);
     Route::get('getProduct/{id}', getSingleProduct::class);
+    Route::put('updateProduct/{id}', updateProduct::class);
 });
