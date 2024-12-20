@@ -13,12 +13,7 @@ class updateProduct extends Action
 
     public function handle($id, updateProductRequest $request)
     {
-        $product = products::find($id);
-
-        if(!$product)
-        {
-            return response()->json(['message'=>'Product not found!'],404);
-        }
+        $product = products::findOrFail($id);
 
         $validatedData = $request->validated();
 
