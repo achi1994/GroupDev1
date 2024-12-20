@@ -5,6 +5,8 @@ use App\Actions\Tasks\GetTask;
 use App\Actions\Tasks\UpdateTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Actions\Products\getProducts;
 use App\Actions\Products\addProduct;
 
 
@@ -15,5 +17,6 @@ Route::prefix('tasks')->group(function (){
 });
 
 Route::prefix('products')->group(function (){
+    Route::get('getProducts', getProducts::class);
     Route::post('create', addProduct::class);
 });
