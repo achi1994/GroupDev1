@@ -9,7 +9,7 @@ use Lorisleiva\Actions\Action;
 class deleteProduct extends Action
 {
 
-    public function handle($id)
+    public function handle(int $id)
     {
         $product = products::findOrFail($id);
 

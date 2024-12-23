@@ -11,7 +11,7 @@ use Lorisleiva\Actions\Action;
 class getSingleProduct extends Action
 {
 
-    public function handle($id)
+    public function handle(int $id)
     {
         return response()->json(new ProductsResource(products::findOrFail($id)), 200) ;
     }
