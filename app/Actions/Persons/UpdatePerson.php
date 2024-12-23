@@ -5,11 +5,10 @@ namespace App\Actions\Persons;
 use App\Http\Requests\Person\UpdatePersonRequest;
 use App\Models\Person;
 use Illuminate\Http\JsonResponse;
-use Lorisleiva\Actions\Concerns\AsAction;
+use Lorisleiva\Actions\Action;
 
-class UpdatePerson
+class UpdatePerson extends Action
 {
-    use AsAction;
 
     public function handle(int $id, array $data): JsonResponse
     {
@@ -27,9 +26,8 @@ class UpdatePerson
 
             return response()->json(['message' => 'Person updated successfully', 'person' => $person]);
 
-        } catch (\Exception $e) {
-
-            return response()->json(['message' => 'Server error', 'error' => $e->getMessage()], 500);
+        } catch (\Exception) {
+            return response()->json(['message' => 'Server error'], 500);
         }
     }
 

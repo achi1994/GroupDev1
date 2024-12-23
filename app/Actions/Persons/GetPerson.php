@@ -6,11 +6,10 @@ use App\Http\Resources\Person\GetPersonsResource;
 use App\Models\Person;
 use http\Env\Response;
 use Illuminate\Http\JsonResponse;
-use Lorisleiva\Actions\Concerns\AsAction;
+use Lorisleiva\Actions\Action;
 
-class GetPerson
+class GetPerson extends Action
 {
-    use AsAction;
 
    public function handle($id = null):JsonResponse{
        if(isset($id)){

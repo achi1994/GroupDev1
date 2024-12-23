@@ -5,30 +5,23 @@ namespace App\Actions\Persons;
 use App\Http\Requests\Person\DeletePersonRequest;
 use App\Models\Person;
 use Illuminate\Http\JsonResponse;
-use Lorisleiva\Actions\Concerns\AsAction;
+use Lorisleiva\Actions\Action;
 
-class DeletePerson
+class DeletePerson extends Action
 {
-    use AsAction;
 
-    public function handle(int $id): bool
+    public function handle(int $id)
     {
-        $person = Person::find($id);
+        $person = Person::findOrFail($id);
 
-        if (!$person) {
-            return false;
-        }
+        $person->delete();
 
-        return $person->delete();
+        return response()->json(['message' => 'Person was successfully deleted'], 200);
     }
 
-    public function asController(DeletePersonRequest $request): JsonResponse{
-        $success = $this->handle($request->id);
+    public function asController(int $id): JsonResponse{
 
-        if($success){
-            return response()->json(['message' => 'Person was successfully deleted'], 200);
-        }
+        return $this->handle($id);
 
-        return response()->json(['message' => 'Person was not deleted'], 500);
     }
 }

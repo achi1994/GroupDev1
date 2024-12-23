@@ -6,12 +6,10 @@ use App\Http\Requests\Person\AddPersonRequest;
 use App\Http\Resources\Person\GetPersonsResource;
 use App\Models\Person;
 use Illuminate\Http\JsonResponse;
-use Lorisleiva\Actions\Concerns\AsAction;
+use Lorisleiva\Actions\Action;
 
-class AddPerson
+class AddPerson extends Action
 {
-    use AsAction;
-
     public function handle(array $data): JsonResponse
     {
         $person = Person::create($data);
