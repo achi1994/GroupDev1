@@ -11,21 +11,18 @@ use Lorisleiva\Actions\Action;
 class updateProduct extends Action
 {
 
-    public function handle($id, updateProductRequest $request)
+    public function handle($id, updateProductRequest $request, array $data)
     {
         $product = products::findOrFail($id);
 
-        $validatedData = $request->validated();
 
-        $product->update(array_filter($validatedData, function($value){
-            return !is_null($value);
-        }));
+        $product->update($data);
 
         return response()->json(new ProductsResource($product),200);
     }
 
     public function asController($id, updateProductRequest $request):JsonResponse
     {
-        return $this->handle($id, $request);
+        return $this->handle($request->validated($id, $request));
     }
 }
