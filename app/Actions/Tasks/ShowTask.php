@@ -8,7 +8,7 @@ use Lorisleiva\Actions\Action;
 
 class ShowTask extends Action
 {
-    public function handle(string $id)
+    public function handle(int $id)
     {
         $task = tasks::find($id);
         if (!$task) {
@@ -17,7 +17,7 @@ class ShowTask extends Action
         return response()->json(new GetTasksResource($task));
     }
 
-    public function asController(string $id)
+    public function asController(int $id)
     {
         return $this->handle($id);
     }

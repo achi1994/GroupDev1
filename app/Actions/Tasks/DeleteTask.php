@@ -7,7 +7,7 @@ use Lorisleiva\Actions\Action;
 
 class DeleteTask extends Action
 {
-    public function handle(string $id)
+    public function handle(int $id)
     {
         $task = tasks::find($id);
         if (!$task) {
@@ -17,7 +17,7 @@ class DeleteTask extends Action
         return response()->json(['message' => 'Task deleted successfully']);
     }
 
-    public function asController(string $id)
+    public function asController(int $id)
     {
         return $this->handle($id);
     }
