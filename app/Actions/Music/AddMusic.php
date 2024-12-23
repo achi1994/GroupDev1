@@ -4,11 +4,12 @@ namespace App\Actions\Music;
 
 use App\Http\Requests\Music\AddMusicRequest;
 use App\Models\Music;
+use Lorisleiva\Actions\Action;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class AddMusic
+class AddMusic extends Action
 {
-    use AsAction;
+
 
     public function handle(array $data)
     {

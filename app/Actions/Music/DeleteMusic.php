@@ -3,11 +3,12 @@
 namespace App\Actions\Music;
 
 use App\Models\Music;
+use Lorisleiva\Actions\Action;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class DeleteMusic
+class DeleteMusic extends Action
 {
-    use AsAction;
+
 
     public function handle($id)
     {

@@ -4,11 +4,12 @@ namespace App\Actions\Music;
 
 use App\Models\Music;
 use Illuminate\Http\Request;
+use Lorisleiva\Actions\Action;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class UpdateMusic
+class UpdateMusic extends Action
 {
-    use AsAction;
+
 
     public function handle($id, array $data)
     {
