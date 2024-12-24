@@ -11,4 +11,9 @@ class Person extends Model
     protected $fillable = ['id', 'name', 'email', 'age'];
 
     public $timestamps = false;
+
+    public function products()
+    {
+        return $this->hasMany(products::class, 'person_id', 'id');
+    }
 }

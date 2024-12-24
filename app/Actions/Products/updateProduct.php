@@ -11,7 +11,7 @@ use Lorisleiva\Actions\Action;
 class updateProduct extends Action
 {
 
-    public function handle($id, updateProductRequest $request, array $data)
+    public function handle(int $id, updateProductRequest $request, array $data)
     {
         $product = products::findOrFail($id);
 
@@ -21,7 +21,7 @@ class updateProduct extends Action
         return response()->json(new ProductsResource($product),200);
     }
 
-    public function asController($id, updateProductRequest $request):JsonResponse
+    public function asController(int $id, updateProductRequest $request):JsonResponse
     {
         return $this->handle($request->validated($id, $request));
     }
