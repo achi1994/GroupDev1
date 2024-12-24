@@ -19,4 +19,9 @@ class tasks extends Model
     {
         return $this->belongsTo(Person::class, 'person_id', 'id');
     }
+
+    public function assignees()
+    {
+        return $this->belongsToMany(Person::class, 'person_task', 'task_id', 'person_id');
+    }
 }

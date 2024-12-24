@@ -19,6 +19,7 @@ class GetTasksResource extends JsonResource
             'id' => $this->resource->id,
             'name' => $this->resource->tittle,
             'person' =>new PersonResource($this->resource->persons),
+            'assignees' => PersonResource::collection($this->assignees),
         ];
     }
 }

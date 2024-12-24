@@ -11,4 +11,9 @@ class Person extends Model
     protected $fillable = ['id', 'name', 'email', 'age'];
 
     public $timestamps = false;
+
+    public function assignedTasks()
+    {
+        return $this->belongsToMany(tasks::class, 'person_task', 'person_id', 'task_id');
+    }
 }
