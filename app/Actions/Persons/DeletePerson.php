@@ -20,8 +20,6 @@ class DeletePerson extends Action
     }
 
     public function asController(int $id): JsonResponse{
-
         return $this->handle($id);
-
     }
 }

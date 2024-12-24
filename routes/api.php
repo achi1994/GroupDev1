@@ -1,11 +1,15 @@
 <?php
 
 use App\Actions\Cities\AddCity;
+use App\Actions\Cities\DeleteCity;
 use App\Actions\Cities\GetCities;
 use App\Actions\Cities\GetCity;
+use App\Actions\Cities\UpdateCity;
 use App\Actions\Countries\AddCountry;
+use App\Actions\Countries\DeleteCountry;
 use App\Actions\Countries\GetCountries;
 use App\Actions\Countries\GetCountry;
+use App\Actions\Countries\UpdateCountry;
 use App\Actions\Persons\DeletePerson;
 use App\Actions\Persons\GetPerson;
 use App\Actions\Persons\UpdatePerson;
@@ -55,10 +59,14 @@ Route::prefix('countries')->group(function (){
    Route::post('create', AddCountry::class);
    Route::get('getCountry/{id}', GetCountry::class);
    Route::get('getCountries', GetCountries::class);
+   Route::post('update/{id}', UpdateCountry::class);
+   Route::delete('delete/{id}', DeleteCountry::class);
 });
 
 Route::prefix('cities')->group(function (){
     Route::post('create', AddCity::class);
     Route::get('getCity/{id}', GetCity::class);
     Route::get('getCities', GetCities::class);
+    Route::post('update/{id}', UpdateCity::class);
+    Route::delete('delete/{id}', DeleteCity::class);
 });
