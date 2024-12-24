@@ -18,7 +18,7 @@ class deleteProduct extends Action
         return response()->json(['message'=>'Product deleted successfully!'],200);
     }
 
-    public function asController($id):JsonResponse
+    public function asController(int $id):JsonResponse
     {
         return $this->handle($id);
     }

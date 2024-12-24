@@ -16,7 +16,7 @@ class getSingleProduct extends Action
         return response()->json(new ProductsResource(products::findOrFail($id)), 200) ;
     }
 
-    public function asController($id):JsonResponse
+    public function asController(int $id):JsonResponse
     {
         return $this->handle($id);
     }
