@@ -1,8 +1,10 @@
 <?php
 
 use App\Actions\Cities\AddCity;
+use App\Actions\Cities\GetCities;
 use App\Actions\Cities\GetCity;
 use App\Actions\Countries\AddCountry;
+use App\Actions\Countries\GetCountries;
 use App\Actions\Countries\GetCountry;
 use App\Actions\Persons\DeletePerson;
 use App\Actions\Persons\GetPerson;
@@ -52,9 +54,11 @@ Route::prefix('persons')->group(function (){
 Route::prefix('countries')->group(function (){
    Route::post('create', AddCountry::class);
    Route::get('getCountry/{id}', GetCountry::class);
+   Route::get('getCountries', GetCountries::class);
 });
 
 Route::prefix('cities')->group(function (){
     Route::post('create', AddCity::class);
     Route::get('getCity/{id}', GetCity::class);
+    Route::get('getCities', GetCities::class);
 });

@@ -5,12 +5,11 @@ namespace App\Actions\Persons;
 use App\Http\Resources\Person\GetPersonsResource;
 use App\Models\Person;
 use Illuminate\Http\JsonResponse;
+use Lorisleiva\Actions\Action;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class GetPersons
+class GetPersons extends Action
 {
-    use AsAction;
-
     public function handle(): JsonResponse
     {
         $persons = Person::all();
