@@ -11,23 +11,17 @@ use Lorisleiva\Actions\Action;
 class GetPerson extends Action
 {
 
-   public function handle($id = null):JsonResponse{
-       if(isset($id)){
-           $person = Person::find($id);
+   public function handle($id):JsonResponse{
+        $person = Person::findOrfail($id);
 
-           if($person){
-               return Response()->json(new GetPersonsResource($person));
-           }
+        if($person){
+            return response()->json(new GetPersonsResource($person));
+        }
 
-           return response()->json(['message' => 'Person not found'], 404);
-       }
-
-       $persons = Person::all();
-
-       return response()->json(GetPersonsResource::collection($persons));
+        return response()->json(['message'=>'Person not found'],404);
    }
 
-   public function asController($id = null): JsonResponse
+   public function asController($id): JsonResponse
    {
         return $this->handle($id);
    }
