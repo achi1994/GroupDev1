@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Cities\AddCity;
+use App\Actions\Countries\AddCountry;
 use App\Actions\Persons\DeletePerson;
 use App\Actions\Persons\GetPerson;
 use App\Actions\Persons\UpdatePerson;
@@ -45,3 +47,10 @@ Route::prefix('persons')->group(function (){
   Route::delete('delete/{id}', DeletePerson::class);
 });
 
+Route::prefix('countries')->group(function (){
+   Route::post('create', AddCountry::class);
+});
+
+Route::prefix('cities')->group(function (){
+    Route::post('create', AddCity::class);
+});
